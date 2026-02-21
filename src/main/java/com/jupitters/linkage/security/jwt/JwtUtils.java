@@ -7,6 +7,7 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 
+import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -38,6 +39,15 @@ public class JwtUtils {
                 .expiration(new Date(new Date().getTime() + jwtExpiration))
                 .signWith(key())
                 .compact();
+    }
+
+    public String getUserNameFromJwtToken(String token){
+        return Jwts.parser()
+                .verifyWith((SecretKey) key())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
     }
 
     private Key key(){
