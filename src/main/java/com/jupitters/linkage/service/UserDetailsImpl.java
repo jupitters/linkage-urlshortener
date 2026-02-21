@@ -1,10 +1,12 @@
 package com.jupitters.linkage.service;
 
+import com.jupitters.linkage.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -22,6 +24,10 @@ public class UserDetailsImpl implements UserDetails {
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
+
+    public static UserDetailsImpl build(User user){
+        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
