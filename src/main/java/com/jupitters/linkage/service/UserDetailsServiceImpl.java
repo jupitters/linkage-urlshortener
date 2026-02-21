@@ -1,6 +1,7 @@
 package com.jupitters.linkage.service;
 
 import com.jupitters.linkage.model.User;
+import com.jupitters.linkage.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
