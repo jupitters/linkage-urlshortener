@@ -35,12 +35,12 @@ public class JwtUtils {
                 .subject(username)
                 .claim("roles", roles)
                 .issuedAt(new Date())
-                .expiration(new Date(new Date().getTime() + 172800000))
-                .signWith()
+                .expiration(new Date(new Date().getTime() + jwtExpiration))
+                .signWith(key())
                 .compact();
     }
 
     private Key key(){
-        return Keys.hmacShaKeyFor(Decoders.BASE64.decode())
+        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
 }
