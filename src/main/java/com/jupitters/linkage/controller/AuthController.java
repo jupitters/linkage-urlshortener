@@ -27,4 +27,8 @@ public class AuthController {
 
         return ResponseEntity.ok("User registered successfully");
     }
+
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
+
+    }
 }
