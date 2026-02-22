@@ -20,6 +20,7 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
         User user = new User();
         user.setUsername(registerRequest.getUsername());
+        user.setEmail(registerRequest.getEmail());
         user.setPassword(registerRequest.getPassword());
         user.setRole("USER_ROLE");
         userService.registerUser(user);
