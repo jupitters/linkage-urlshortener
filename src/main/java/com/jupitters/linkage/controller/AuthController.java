@@ -5,6 +5,7 @@ import com.jupitters.linkage.model.User;
 import com.jupitters.linkage.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     private final UserService userService;
 
+    @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
         User user = new User();
         user.setUsername(registerRequest.getUsername());
