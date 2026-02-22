@@ -2,14 +2,18 @@ package com.jupitters.linkage.controller;
 
 import com.jupitters.linkage.dto.RegisterRequest;
 import com.jupitters.linkage.model.User;
+import com.jupitters.linkage.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
 public class AuthController {
+    private final UserService userService;
 
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
         User user = new User();
