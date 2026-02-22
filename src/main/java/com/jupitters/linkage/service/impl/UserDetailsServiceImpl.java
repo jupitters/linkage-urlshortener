@@ -1,4 +1,4 @@
-package com.jupitters.linkage.service;
+package com.jupitters.linkage.service.impl;
 
 import com.jupitters.linkage.model.User;
 import com.jupitters.linkage.repository.UserRepository;

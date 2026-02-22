@@ -1,6 +1,6 @@
 package com.jupitters.linkage.security.jwt;
 
-import com.jupitters.linkage.service.UserDetailsImpl;
+import com.jupitters.linkage.service.impl.UserDetailsImpl;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

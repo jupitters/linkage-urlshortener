@@ -1,4 +1,4 @@
-package com.jupitters.linkage.service;
+package com.jupitters.linkage.service.impl;
 
 import com.jupitters.linkage.model.User;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

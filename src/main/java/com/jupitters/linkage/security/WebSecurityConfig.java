@@ -1,7 +1,7 @@
 package com.jupitters.linkage.security;
 
 import com.jupitters.linkage.security.jwt.JwtAuthenticationFilter;
-import com.jupitters.linkage.service.UserDetailsServiceImpl;
+import com.jupitters.linkage.service.impl.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
