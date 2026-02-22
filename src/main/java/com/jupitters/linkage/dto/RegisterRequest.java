@@ -1,7 +1,10 @@
 package com.jupitters.linkage.dto;
 
+import lombok.Data;
+
 import java.util.Set;
 
+@Data
 public class RegisterRequest {
     private String username;
     private String email;
