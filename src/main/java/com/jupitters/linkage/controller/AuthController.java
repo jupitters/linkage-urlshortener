@@ -1,5 +1,6 @@
 package com.jupitters.linkage.controller;
 
+import com.jupitters.linkage.dto.LoginRequest;
 import com.jupitters.linkage.dto.RegisterRequest;
 import com.jupitters.linkage.model.User;
 import com.jupitters.linkage.service.UserService;
