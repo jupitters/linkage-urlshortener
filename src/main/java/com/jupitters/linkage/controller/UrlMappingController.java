@@ -23,7 +23,7 @@ public class UrlMappingController {
     public ResponseEntity<UrlMappingDTO> createShortUrl(@RequestBody Map<String, String> request, Principal principal){
         String originalUrl = request.get("originalUrl");
         User user = userService.findByUsername(principal.getName());
-        UrlMappingDto shortUrl = urlMappingService.createShortUrl(originalUrl, user);
+        UrlMappingDTO shortUrl = urlMappingService.createShortUrl(originalUrl, user);
 
         return ResponseEntity.ok(shortUrl);
     }
