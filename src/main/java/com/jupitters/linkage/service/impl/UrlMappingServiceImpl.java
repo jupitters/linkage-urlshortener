@@ -25,7 +25,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         urlMapping.setCreatedDate(LocalDateTime.now());
 
         UrlMapping savedUrlMapping = urlMappingRepository.save(urlMapping);
-        return convertUrlMappingToDtoBuilder(savedUrlMapping)
+        return convertUrlMappingToDtoBuilder(savedUrlMapping);
     }
 
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
