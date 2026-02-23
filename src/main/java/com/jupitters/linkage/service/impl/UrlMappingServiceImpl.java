@@ -24,6 +24,18 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         urlMapping.setUser(user);
         urlMapping.setCreatedDate(LocalDateTime.now());
 
-        return urlMappingRepository.save(urlMapping);
+        UrlMapping savedUrlMapping = urlMappingRepository.save(urlMapping);
+        return convertUrlMappingToDtoBuilder(savedUrlMapping)
+    }
+
+    private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
+        return UrlMappingDTO.builder()
+                .id(urlMapping.getId())
+                .originalUrl(urlMapping.getOriginalUrl())
+                .shortUrl(urlMapping.getShortUrl())
+                .clickCount(urlMapping.getClickCount())
+                .createdDate(urlMapping.getCreatedDate())
+                .username(urlMapping.getUser().getUsername())
+                .build();
     }
 }
