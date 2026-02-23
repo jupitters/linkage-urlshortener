@@ -40,7 +40,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
                 .build();
     }
 
-    private String generateShortUrl(String originalUrl) {
+    private String generateShortUrl() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01233456789";
 
         Random random = new Random();
