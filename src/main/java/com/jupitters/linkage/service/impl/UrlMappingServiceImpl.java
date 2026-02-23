@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +38,18 @@ public class UrlMappingServiceImpl implements UrlMappingService {
                 .createdDate(urlMapping.getCreatedDate())
                 .username(urlMapping.getUser().getUsername())
                 .build();
+    }
+
+    private String generateShortUrl(String originalUrl) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01233456789";
+
+        Random random = new Random();
+        StringBuilder  shortUrl = new StringBuilder(8);
+
+        for(int i = 0; i < 8; i++){
+            shortUrl.append(characters.charAt(random.nextInt(characters.length())));
+        }
+
+        return shortUrl.toString();
     }
 }
