@@ -1,5 +1,6 @@
 package com.jupitters.linkage.controller;
 
+import com.jupitters.linkage.dto.UrlMappingDTO;
 import com.jupitters.linkage.model.User;
 import com.jupitters.linkage.service.UrlMappingService;
 import com.jupitters.linkage.service.UserService;
