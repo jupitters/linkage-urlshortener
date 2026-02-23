@@ -20,6 +20,7 @@ public class UrlMappingController {
     private final UrlMappingService urlMappingService;
     private final UserService userService;
 
+    @PostRequest("/shorten")
     public ResponseEntity<UrlMappingDTO> createShortUrl(@RequestBody Map<String, String> request, Principal principal){
         String originalUrl = request.get("originalUrl");
         User user = userService.findByUsername(principal.getName());
