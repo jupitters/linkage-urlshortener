@@ -6,6 +6,7 @@ import com.jupitters.linkage.service.UrlMappingService;
 import com.jupitters.linkage.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class UrlMappingController {
     private final UserService userService;
 
     @PostMapping("/shorten")
+    @PreAuthorize("hasRole('User)")
     public ResponseEntity<UrlMappingDTO> createShortUrl(@RequestBody Map<String, String> request, Principal principal){
         String originalUrl = request.get("originalUrl");
         User user = userService.findByUsername(principal.getName());
