@@ -8,5 +8,5 @@ import com.jupitters.linkage.security.jwt.JwtAuthenticationResponse;
 public interface UserService {
     User registerUser(User user);
     JwtAuthenticationResponse login(LoginRequest loginRequest);
-    User findByUsername(String name);
+    User findByUsername(String username);
 }
