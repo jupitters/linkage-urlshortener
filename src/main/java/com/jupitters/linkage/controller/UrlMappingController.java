@@ -44,6 +44,7 @@ public class UrlMappingController {
     }
 
     @GetMapping("/analytics/{shortUrl}")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<ClickEventDTO>> getUrlAnalytics(@PathVariable String shortUrl,
                                                                @RequestParam("startDate") String startDate,
                                                                @RequestParam("endDate") String endDate){
