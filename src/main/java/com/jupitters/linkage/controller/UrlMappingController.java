@@ -40,7 +40,7 @@ public class UrlMappingController {
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<UrlMappingDTO>> getUserUrls(Principal principal){
         User user = userService.findByUsername(principal.getName());
-        List<UrlMappingDTO> urls = urlMappingService.getUrslByUser(user);
+        List<UrlMappingDTO> urls = urlMappingService.getUrlsByUser(user);
         return ResponseEntity.ok(urls);
     }
 

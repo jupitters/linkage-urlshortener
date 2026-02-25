@@ -10,8 +10,10 @@ import com.jupitters.linkage.service.UrlMappingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -34,8 +36,9 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         return convertUrlMappingToDtoBuilder(savedUrlMapping);
     }
 
+
     @Override
-    public List<UrlMappingDTO> getUrslByUser(User user) {
+    public List<UrlMappingDTO> getUrlsByUser(User user) {
         return urlMappingRepository.findByUser(user).stream()
                 .map(this::convertUrlMappingToDtoBuilder)
                 .toList();
@@ -58,6 +61,11 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         }
 
         return null;
+    }
+
+    @Override
+    public Map<LocalDate, Long> getTotalClicksByUserAndDate(User user, LocalDateTime start, LocalDateTime end) {
+        return Map.of();
     }
 
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
