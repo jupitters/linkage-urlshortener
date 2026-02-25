@@ -42,4 +42,8 @@ public class UrlMappingController {
         List<UrlMappingDTO> urls = urlMappingService.getUrslByUser(user);
         return ResponseEntity.ok(urls);
     }
+
+    public ResponseEntity<List<ClickEventDTO>> getUrlAnalytics(){
+
+    }
 }
