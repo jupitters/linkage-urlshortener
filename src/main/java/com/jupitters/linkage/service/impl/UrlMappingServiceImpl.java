@@ -4,6 +4,7 @@ import com.jupitters.linkage.dto.ClickEventDTO;
 import com.jupitters.linkage.dto.UrlMappingDTO;
 import com.jupitters.linkage.model.UrlMapping;
 import com.jupitters.linkage.model.User;
+import com.jupitters.linkage.repository.ClickEventRepository;
 import com.jupitters.linkage.repository.UrlMappingRepository;
 import com.jupitters.linkage.service.UrlMappingService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UrlMappingServiceImpl implements UrlMappingService {
     private final UrlMappingRepository urlMappingRepository;
+    private final ClickEventRepository clickEventRepository;
 
     @Override
     public UrlMappingDTO createShortUrl(String originalUrl, User user) {
