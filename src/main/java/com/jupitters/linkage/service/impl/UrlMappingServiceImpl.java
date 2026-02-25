@@ -1,5 +1,6 @@
 package com.jupitters.linkage.service.impl;
 
+import com.jupitters.linkage.dto.ClickEventDTO;
 import com.jupitters.linkage.dto.UrlMappingDTO;
 import com.jupitters.linkage.model.UrlMapping;
 import com.jupitters.linkage.model.User;
@@ -36,6 +37,16 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         return urlMappingRepository.findByUser(user).stream()
                 .map(this::convertUrlMappingToDtoBuilder)
                 .toList();
+    }
+
+    @Override
+    public List<ClickEventDTO> getClickEventsByDate(String shortUrl, LocalDateTime start, LocalDateTime end) {
+        UrlMapping urlMapping = urlMappingRepository.findByShortUrl(shortUrl);
+        if(urlMapping != null){
+
+        }
+
+        return List.of();
     }
 
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
