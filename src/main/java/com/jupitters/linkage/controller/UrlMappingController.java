@@ -61,10 +61,10 @@ public class UrlMappingController {
     public ResponseEntity<Map<LocalDate, Long>> getTotalClicksyDate(Principal principal,
                                                                     @RequestParam("startDate") String startDate,
                                                                     @RequestParam("endDate") String endDate){
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
         User user = userService.findByUsername(principal.getName());
-        LocalDateTime start = LocalDateTime.parse(startDate, formatter);
-        LocalDateTime end = LocalDateTime.parse(endDate, formatter);
+        LocalDate start = LocalDate.parse(startDate, formatter);
+        LocalDate end = LocalDate.parse(endDate, formatter);
 
         Map<LocalDate, Long> totalClicks = urlMappingService.getTotalClicksByUserAndDate(user, start, end);
     }
