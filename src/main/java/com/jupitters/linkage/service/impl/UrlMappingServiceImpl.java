@@ -2,6 +2,7 @@ package com.jupitters.linkage.service.impl;
 
 import com.jupitters.linkage.dto.ClickEventDTO;
 import com.jupitters.linkage.dto.UrlMappingDTO;
+import com.jupitters.linkage.model.ClickEvent;
 import com.jupitters.linkage.model.UrlMapping;
 import com.jupitters.linkage.model.User;
 import com.jupitters.linkage.repository.ClickEventRepository;
@@ -65,7 +66,12 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
     @Override
     public Map<LocalDate, Long> getTotalClicksByUserAndDate(User user, LocalDateTime start, LocalDateTime end) {
-        return Map.of();
+        List<UrlMapping> urlMappings = urlMappingRepository.findByUser(user);
+        List<ClickEvent> clickEvents = clickEventRepository.findByUrlMappingInAndClickDateBetween(urlMappings, start, end);
+
+        return clickEvents.stream()
+                .collect(Collectors.groupingBy(click -> click.getClickDate().toLocalDate(), Collectors.counting()));
+
     }
 
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
