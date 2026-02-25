@@ -45,10 +45,19 @@ public class UrlMappingServiceImpl implements UrlMappingService {
     public List<ClickEventDTO> getClickEventsByDate(String shortUrl, LocalDateTime start, LocalDateTime end) {
         UrlMapping urlMapping = urlMappingRepository.findByShortUrl(shortUrl);
         if(urlMapping != null){
-
+            return clickEventRepository.findByUrlMappingAndClickDateBetween(urlMapping, start, end).stream()
+                    .collect(Collectors.groupingBy(click -> click.getClickDate().toLocalDate(), Collectors.counting()))
+                    .entrySet().stream()
+                    .map(entry -> {
+                        ClickEventDTO clickEventDTO = new ClickEventDTO();
+                        clickEventDTO.setClickdate(entry.getKey());
+                        clickEventDTO.setCount(entry.getValue());
+                        return clickEventDTO;
+                    })
+                    .collect(Collectors.toList());
         }
 
-        return List.of();
+        return null;
     }
 
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
