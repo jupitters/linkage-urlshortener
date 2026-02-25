@@ -35,4 +35,9 @@ public class UrlMappingController {
         return ResponseEntity.ok(shortUrl);
     }
 
+    public ResponseEntity<List<UrlMappingDTO>> getUserUrls(Principal principal){
+        User user = userService.findByUsername(principal.getName());
+        List<UrlMappingDTO> urls = urlMappingService.getUrslByUser(user);
+        return ResponseEntity.ok(urls);
+    }
 }
