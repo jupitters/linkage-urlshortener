@@ -65,7 +65,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
     }
 
     @Override
-    public Map<LocalDate, Long> getTotalClicksByUserAndDate(User user, LocalDateTime start, LocalDateTime end) {
+    public Map<LocalDate, Long> getTotalClicksByUserAndDate(User user, LocalDate start, LocalDate end) {
         List<UrlMapping> urlMappings = urlMappingRepository.findByUser(user);
         List<ClickEvent> clickEvents = clickEventRepository.findByUrlMappingInAndClickDateBetween(urlMappings, start, end);
 
