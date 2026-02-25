@@ -2,6 +2,7 @@ package com.jupitters.linkage.controller;
 
 import com.jupitters.linkage.dto.UrlMappingDTO;
 import com.jupitters.linkage.model.User;
+import com.jupitters.linkage.repository.UserRepository;
 import com.jupitters.linkage.service.UrlMappingService;
 import com.jupitters.linkage.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -21,6 +23,7 @@ import java.util.Map;
 public class UrlMappingController {
     private final UrlMappingService urlMappingService;
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @PostMapping("/shorten")
     @PreAuthorize("hasRole('USER')")
@@ -31,4 +34,5 @@ public class UrlMappingController {
 
         return ResponseEntity.ok(shortUrl);
     }
+
 }
