@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +33,9 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
     @Override
     public List<UrlMappingDTO> getUrslByUser(User user) {
-        return List.of();
+        return urlMappingRepository.findByUser(user).stream()
+                .map(this::convertUrlMappingToDtoBuilder)
+                .toList();
     }
 
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
