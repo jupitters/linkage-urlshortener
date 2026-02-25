@@ -35,7 +35,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
     public List<UrlMappingDTO> getUrslByUser(User user) {
         return urlMappingRepository.findByUser(user).stream()
                 .map(this::convertUrlMappingToDtoBuilder)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
