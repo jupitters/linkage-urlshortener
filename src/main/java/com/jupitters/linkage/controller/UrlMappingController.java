@@ -58,6 +58,7 @@ public class UrlMappingController {
         return ResponseEntity.ok(clickEvents);
     }
 
+    @GetMapping("/totalClicks")
     public ResponseEntity<Map<LocalDate, Long>> getTotalClicksyDate(Principal principal,
                                                                     @RequestParam("startDate") String startDate,
                                                                     @RequestParam("endDate") String endDate){
