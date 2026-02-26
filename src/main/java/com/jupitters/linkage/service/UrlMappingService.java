@@ -2,6 +2,7 @@ package com.jupitters.linkage.service;
 
 import com.jupitters.linkage.dto.ClickEventDTO;
 import com.jupitters.linkage.dto.UrlMappingDTO;
+import com.jupitters.linkage.model.UrlMapping;
 import com.jupitters.linkage.model.User;
 
 import java.time.LocalDate;
@@ -17,4 +18,6 @@ public interface UrlMappingService {
     List<ClickEventDTO> getClickEventsByDate(String shortUrl, LocalDateTime start, LocalDateTime end);
 
     Map<LocalDate, Long> getTotalClicksByUserAndDate(User user, LocalDate start, LocalDate end);
+
+    UrlMapping getOriginalUrl(String shortUrl);
 }
