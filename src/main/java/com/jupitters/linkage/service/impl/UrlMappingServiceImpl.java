@@ -74,6 +74,12 @@ public class UrlMappingServiceImpl implements UrlMappingService {
 
     }
 
+    @Override
+    public UrlMapping getOriginalUrl(String shortUrl) {
+        UrlMapping urlMapping = urlMappingRepository.findByShortUrl(shortUrl);
+        return urlMapping;
+    }
+
     private UrlMappingDTO convertUrlMappingToDtoBuilder(UrlMapping urlMapping) {
         return UrlMappingDTO.builder()
                 .id(urlMapping.getId())
