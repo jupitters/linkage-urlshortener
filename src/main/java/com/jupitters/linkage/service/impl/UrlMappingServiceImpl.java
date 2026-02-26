@@ -79,6 +79,7 @@ public class UrlMappingServiceImpl implements UrlMappingService {
         UrlMapping urlMapping = urlMappingRepository.findByShortUrl(shortUrl);
         if(urlMapping != null){
             urlMapping.setClickCount(urlMapping.getClickCount() + 1);
+            urlMappingRepository.save(urlMapping);
         }
         return urlMapping;
     }
